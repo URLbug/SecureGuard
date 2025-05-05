@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->boolean('active')->default(true);
-            $table->string('username');
-            $table->string('password');
+            $table->string('username', 255);
+            $table->string('password', 255);
 
             /*
              * Группа пользователя
@@ -25,6 +25,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('groups');
 
+            $table->rememberToken();
             $table->timestamps();
         });
     }
