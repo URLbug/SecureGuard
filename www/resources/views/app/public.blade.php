@@ -14,7 +14,7 @@
         <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-4">
                 <!-- Логотип -->
-                <a href="/" class="flex items-center">
+                <a href="{{ route('home') }}" class="flex items-center">
                     <span class="text-2xl font-bold text-amber-500">Secure</span>
                     <span class="text-2xl font-bold">Guard</span>
                 </a>
@@ -60,12 +60,11 @@
         <nav class="bg-gray-800 py-4">
             <div class="container mx-auto px-4">
                 <ul class="flex flex-col md:flex-row gap-6 justify-center">
-                    <li><a href="#" class="hover:text-amber-500">Главная</a></li>
-                    <li><a href="#" class="hover:text-amber-500">О компании</a></li>
-                    <li><a href="#" class="hover:text-amber-500">Охранные услуги</a></li>
-                    <li><a href="#" class="hover:text-amber-500">Цены на услуги</a></li>
-                    <li><a href="#" class="hover:text-amber-500">Новости</a></li>
-                    <li><a href="#" class="hover:text-amber-500">Контакты</a></li>
+                    <li><a href="{{ route('about') }}" class="hover:text-amber-500">О компании</a></li>
+                    <li><a href="{{ route('service') }}" class="hover:text-amber-500">Охранные услуги</a></li>
+                    <li><a href="{{ route('service') }}" class="hover:text-amber-500">Цены на услуги</a></li>
+                    <li><a href="{{ route('news') }}" class="hover:text-amber-500">Новости</a></li>
+                    <li><a href="{{ route('contact') }}" class="hover:text-amber-500">Контакты</a></li>
                 </ul>
             </div>
         </nav>

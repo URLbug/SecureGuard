@@ -90,13 +90,21 @@
             </div>
         </div>
     </div>
-    <div class="flex items-center justify-center border-2 border-spacing-3 border-gray-500 border-solid">
-        <div>
-            <span>123</span>
-            123
-        </div>
-        <div class="md:ml-96">
-            <img src="{{ asset('images/vooruzhennaya11.jpg') }}" class="rounded-lg" alt="Охрана">
+    <div class="container mx-auto px-4 py-8 flex items-center justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="rounded-lg overflow-hidden shadow-lg">
+                <img src="{{ asset('images/vooruzhennaya11.jpg') }}" alt="Охрана" class="w-full h-auto object-cover">
+            </div>
+            <div class="text-white">
+                <h2 class="text-3xl font-bold mb-4">
+                    <span class="text-amber-500">Secure</span>Guard — надежная защита вашего бизнеса и личной безопасности
+                </h2>
+                <p class="text-xl mt-2 leading-relaxed">
+                    <span class="text-amber-500 font-semibold">Secure</span>Guard — ведущее частное охранное предприятие (ЧОП) в России, предоставляющее комплексные услуги в сфере безопасности с 2010 года.
+                    Мы специализируемся на физической охране, кибербезопасности, мониторинге объектов и разработке индивидуальных систем защиты.
+                    Наши клиенты — это крупные корпорации, банки, торговые сети, промышленные предприятия и частные лица, ценящие свою безопасность.
+                </p>
+            </div>
         </div>
     </div>
 @endsection
