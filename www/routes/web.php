@@ -11,6 +11,10 @@ Route::prefix('service')->group(function () {
         return view('public.service.index');
     })->where('id', '[0-9]+')
         ->name('service');
+
+    Route::get('/price', function(?int $id = null){
+        return view('public.service.index');
+    })->name('service-price');
 });
 
 
@@ -28,3 +32,6 @@ Route::get('/contact', function(){
 Route::get('/about', function(){
     return view('public.about.index');
 })->name('about');
+
+
+Route::prefix('ajax')->group(function () {});

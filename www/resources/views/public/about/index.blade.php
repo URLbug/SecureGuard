@@ -3,7 +3,7 @@
 @section('content')
     <div class="text-white">
         <div class="text-center mb-8">
-            <h1 class="text-5xl font-bold">
+            <h1 class="md:text-5xl text-4xl font-bold">
                 <span class="text-amber-500">Secure</span>Guard — ваш надежный щит в мире угроз!
             </h1>
         </div>

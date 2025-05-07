@@ -4,7 +4,7 @@
     <section class="py-12">
         <div class="container mx-auto px-4">
             <!-- Заголовок раздела -->
-            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Наши охранные услуги</h2>
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Наши охранные услуги</h2>
 
             <!-- Сетка услуг -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -16,13 +16,13 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50"></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Физическая охрана</h3>
-                        <p class="text-gray-600 mb-4">Круглосуточная охрана объектов любой сложности</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Физическая охрана</h3>
+                        <p class="text-gray-200 mb-4">Круглосуточная охрана объектов любой сложности</p>
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-amber-500 font-bold text-lg">от 15 000 ₽/мес</span>
                         </div>
                         <button class="w-full bg-amber-500 hover:bg-amber-600 text-white py-2 rounded-lg
-                    transition-all duration-300">
+                    transition-all duration-300 service-btn">
                             Заказать
                         </button>
                     </div>
@@ -37,8 +37,8 @@
                         </svg>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Пультовая охрана</h3>
-                        <p class="text-gray-600 mb-4">Мониторинг 24/7 с мгновенным реагированием</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Пультовая охрана</h3>
+                        <p class="text-gray-200 mb-4">Мониторинг 24/7 с мгновенным реагированием</p>
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-amber-500 font-bold text-lg">от 3 500 ₽/мес</span>
                         </div>
@@ -55,15 +55,18 @@
             <!-- Пагинация -->
             <div class="mt-8 flex justify-center">
                 <nav class="flex space-x-2">
-                    <a href="#" class="px-3 py-1 text-gray-500 hover:text-amber-500 transition-colors">&laquo;</a>
+                    <a href="#" class="px-3 py-1 text-gray-200 hover:text-amber-500 transition-colors">&laquo;</a>
                     <a href="#" class="px-3 py-1 bg-amber-500 text-white rounded">1</a>
-                    <a href="#" class="px-3 py-1 text-gray-700 hover:text-amber-500 transition-colors">2</a>
-                    <a href="#" class="px-3 py-1 text-gray-700 hover:text-amber-500 transition-colors">3</a>
+                    <a href="#" class="px-3 py-1 text-gray-300 hover:text-amber-500 transition-colors">2</a>
+                    <a href="#" class="px-3 py-1 text-gray-300 hover:text-amber-500 transition-colors">3</a>
                     <span class="px-3 py-1 text-gray-400">...</span>
-                    <a href="#" class="px-3 py-1 text-gray-700 hover:text-amber-500 transition-colors">10</a>
-                    <a href="#" class="px-3 py-1 text-gray-500 hover:text-amber-500 transition-colors">&raquo;</a>
+                    <a href="#" class="px-3 py-1 text-gray-300 hover:text-amber-500 transition-colors">10</a>
+                    <a href="#" class="px-3 py-1 text-gray-200 hover:text-amber-500 transition-colors">&raquo;</a>
                 </nav>
             </div>
         </div>
+
+        @component('components.service-form')
+        @endcomponent
     </section>
 @endsection

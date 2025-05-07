@@ -17,11 +17,11 @@
                 </p>
 
                 <div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-                    <a href="#" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg
+                    <a href="{{ route('service') }}" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg
                 transition-all duration-300 font-semibold">
                         Заказать услугу
                     </a>
-                    <a href="#" class="border-2 border-amber-500 text-amber-500 hover:bg-amber-500/10
+                    <a href="{{ route('about') }}" class="border-2 border-amber-500 text-amber-500 hover:bg-amber-500/10
                 px-8 py-3 rounded-lg transition-all duration-300">
                         Подробнее
                     </a>
