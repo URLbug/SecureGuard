@@ -16,14 +16,18 @@ Route::prefix('service')->group(function () {
     })->where('id', '[0-9]+')
         ->name('service');
 
-    Route::get('/price', function(?int $id = null){
-        return view('public.service.index');
+    Route::get('/price', function(){
+        return view('public.service.price');
     })->name('service-price');
 });
 
 
 Route::prefix('news')->group(function () {
     Route::get('/{id?}', function(?int $id = null){
+        if($id !== null) {
+            return view('public.news.detail');
+        }
+
         return view('public.news.index');
     })->where('id', '[0-9]+')
         ->name('news');

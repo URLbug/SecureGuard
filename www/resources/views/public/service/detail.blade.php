@@ -22,34 +22,6 @@
                         от 15 000 ₽/мес
                     </div>
 
-                    <!-- Описание -->
-                    <div class="prose text-gray-300">
-                        <p>Профессиональная охрана вашего имущества и территории с использованием:</p>
-                        <ul class="list-disc pl-6">
-                            <li>Круглосуточные посты охраны</li>
-                            <li>Патрулирование территории</li>
-                            <li>Контроль доступа</li>
-                            <li>Системы видеонаблюдения</li>
-                            <li>Современные средства связи</li>
-                        </ul>
-                    </div>
-
-                    <!-- Особенности -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center gap-2">
-                            <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span>24/7 Охранный мониторинг</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                            <span>Лицензированные сотрудники</span>
-                        </div>
-                    </div>
-
                     <!-- Кнопка заказа -->
                     <button class="mt-6 bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-lg
                 transition-all duration-300 font-semibold flex items-center gap-2 service-btn"
