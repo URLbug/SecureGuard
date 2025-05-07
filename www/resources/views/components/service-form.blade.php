@@ -58,7 +58,7 @@
                     transition-colors duration-300">
                     Отправить
                 </button>
-                <button type="button" id="cancelBtn"
+                <button type="button" id="closeBtnModal"
                         class="flex-1 border border-gray-700 hover:border-amber-500 text-white px-6 py-2 rounded-lg
                     transition-colors duration-300">
                     Отмена

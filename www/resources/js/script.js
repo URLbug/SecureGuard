@@ -39,6 +39,14 @@ const modal = {
     service: function(){
         function closeAllModals() {
             document.querySelectorAll('[id$="Modal"]').forEach(modal => {
+                if(modal.id === 'closeBtnModal') {
+                    const modal = document.getElementById('modal');
+
+                    modal.classList.add('hidden');
+
+                    return;
+                }
+
                 modal.classList.add('hidden');
             });
         }
@@ -75,7 +83,6 @@ const modal = {
             setTimeout(() => {
                 let pos = this.value.indexOf('_');
                 if (pos === -1) pos = this.value.length;
-                modal.setCursorPosition(pos, this);
             }, 0);
         });
 
