@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        @component('components.service-form', ['serviceType' => $service->title])
+        @component('components.service-form')
         @endcomponent
     </section>
 @endsection
