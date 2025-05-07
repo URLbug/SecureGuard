@@ -8,6 +8,10 @@ Route::get('/', function () {
 
 Route::prefix('service')->group(function () {
     Route::get('/{id?}', function(?int $id = null){
+        if($id !== null) {
+            return view('public.service.detail');
+        }
+
         return view('public.service.index');
     })->where('id', '[0-9]+')
         ->name('service');

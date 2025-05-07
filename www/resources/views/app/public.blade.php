@@ -62,7 +62,7 @@
                 <ul class="flex flex-col md:flex-row gap-6 justify-center">
                     <li><a href="{{ route('about') }}" class="hover:text-amber-500">О компании</a></li>
                     <li><a href="{{ route('service') }}" class="hover:text-amber-500">Охранные услуги</a></li>
-                    <li><a href="{{ route('service') }}" class="hover:text-amber-500">Цены на услуги</a></li>
+                    <li><a href="{{ route('service-price') }}" class="hover:text-amber-500">Цены на услуги</a></li>
                     <li><a href="{{ route('news') }}" class="hover:text-amber-500">Новости</a></li>
                     <li><a href="{{ route('contact') }}" class="hover:text-amber-500">Контакты</a></li>
                 </ul>

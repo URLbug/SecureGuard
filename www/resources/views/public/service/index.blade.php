@@ -11,40 +11,27 @@
                 <!-- Карточка услуги 1 -->
                 <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden">
                     <div class="relative aspect-square bg-gray-200">
-                        <img src="https://via.placeholder.com/400x300" alt="Физическая охрана"
+                        <a href="{{ route('service', ['id' => 123]) }}">
+                            <img src="https://via.placeholder.com/400x300" alt="Физическая охрана"
                              class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50"></div>
+                        </a>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Физическая охрана</h3>
+                        <a href="{{ route('service', ['id' => 123]) }}">
+                            <h3 class="text-xl font-bold text-gray-400 mb-2 hover:text-amber-500">Физическая охрана</h3>
+                        </a>
                         <p class="text-gray-200 mb-4">Круглосуточная охрана объектов любой сложности</p>
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-amber-500 font-bold text-lg">от 15 000 ₽/мес</span>
                         </div>
-                        <button class="w-full bg-amber-500 hover:bg-amber-600 text-white py-2 rounded-lg
-                    transition-all duration-300 service-btn">
-                            Заказать
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Карточка услуги 2 (без изображения) -->
-                <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden">
-                    <div class="aspect-square bg-gray-100 flex items-center justify-center">
-                        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Пультовая охрана</h3>
-                        <p class="text-gray-200 mb-4">Мониторинг 24/7 с мгновенным реагированием</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-amber-500 font-bold text-lg">от 3 500 ₽/мес</span>
-                        </div>
-                        <button class="w-full bg-amber-500 hover:bg-amber-600 text-white py-2 rounded-lg
-                    transition-all duration-300">
-                            Заказать
+                        <button class="w-full bg-amber-500 hover:bg-amber-600 text-white px-8 py-2 rounded-lg
+                transition-all duration-300 font-semibold flex items-center justify-center gap-2 service-btn">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                            </svg>
+                            Оставить заявку
                         </button>
                     </div>
                 </div>
