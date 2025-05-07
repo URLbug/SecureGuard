@@ -22,12 +22,13 @@
                             <a href="{{ route('service', ['id' => $service->id]) }}">
                                 <h3 class="text-xl font-bold text-gray-400 mb-2 hover:text-amber-500">{{ $service->title }}</h3>
                             </a>
-                            <p class="text-gray-200 mb-4">{{ $service->description }}</p>
+                            <p class="text-gray-200 mb-4">{{ substr($service->description, 0, 200) }}</p>
                             <div class="flex justify-between items-center mb-4">
                                 <span class="text-amber-500 font-bold text-lg">от {{ $service->price }} ₽</span>
                             </div>
                             <button class="w-full bg-amber-500 hover:bg-amber-600 text-white px-8 py-2 rounded-lg
-                transition-all duration-300 font-semibold flex items-center justify-center gap-2 service-btn">
+                transition-all duration-300 font-semibold flex items-center justify-center gap-2 service-btn"
+                                    data-service-type="{{ $service->title }}">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>

@@ -13,11 +13,6 @@
             <a href="{{ route('service') }}?page={{ $i }}" class="px-3 py-1 text-gray-300 hover:text-amber-500 transition-colors">{{ $i }}</a>
         @endfor
 
-        @if($lastPage < 3)
-            <span class="px-3 py-1 text-gray-400">...</span>
-            <a href="{{ route('service') }}?page={{ $lastPage }}" class="px-3 py-1 text-gray-300 hover:text-amber-500 transition-colors">{{ $lastPage }}</a>
-        @endif
-
         @if($currentPage !== $lastPage)
             <a href="{{ route($route) }}?page={{ $currentPage + 1}}" class="px-3 py-1 text-gray-200 hover:text-amber-500 transition-colors">&raquo;</a>
         @endif

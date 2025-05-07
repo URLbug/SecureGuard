@@ -11,9 +11,8 @@ Route::prefix('service')->group(function () {
         ->where('id', '[0-9]+')
         ->name('service');
 
-    Route::get('/price', function(){
-        return view('public.service.price');
-    })->name('service-price');
+    Route::get('/price', [\App\Http\Controllers\ServiceController::class, 'index'])
+        ->name('service-price');
 });
 
 
