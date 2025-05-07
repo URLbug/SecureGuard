@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Service;
+use App\Models\Form;
 use Illuminate\Http\Request;
 
-class ServiceAPIController extends Controller
+class FormAPIController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class ServiceAPIController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Service $service)
+    public function show(Form $form)
     {
         //
     }
@@ -34,7 +34,7 @@ class ServiceAPIController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Form $form)
     {
         //
     }
@@ -42,7 +42,7 @@ class ServiceAPIController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Service $service)
+    public function destroy(Form $form)
     {
         //
     }
