@@ -6,11 +6,11 @@
 
         @for($i=1; $i < $lastPage+1; $i++)
             @if($currentPage === $i)
-                <a href="{{ route('service') }}?page={{ $i }}" class="px-3 py-1 bg-amber-500 text-white rounded">{{ $i }}</a>
+                <a href="{{ route($route) }}?page={{ $i }}" class="px-3 py-1 bg-amber-500 text-white rounded">{{ $i }}</a>
                 @continue
             @endif
 
-            <a href="{{ route('service') }}?page={{ $i }}" class="px-3 py-1 text-gray-300 hover:text-amber-500 transition-colors">{{ $i }}</a>
+            <a href="{{ route($route) }}?page={{ $i }}" class="px-3 py-1 text-gray-300 hover:text-amber-500 transition-colors">{{ $i }}</a>
         @endfor
 
         @if($currentPage !== $lastPage)

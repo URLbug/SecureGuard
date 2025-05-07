@@ -17,13 +17,8 @@ Route::prefix('service')->group(function () {
 
 
 Route::prefix('news')->group(function () {
-    Route::get('/{id?}', function(?int $id = null){
-        if($id !== null) {
-            return view('public.news.detail');
-        }
-
-        return view('public.news.index');
-    })->where('id', '[0-9]+')
+    Route::get('/{id?}', [\App\Http\Controllers\NewsController::class, 'index'])
+        ->where('id', '[0-9]+')
         ->name('news');
 });
 
