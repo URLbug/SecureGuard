@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->boolean('active')->default(true);
             $table->string('title');
+            $table->integer('price');
             $table->text('description');
             $table->string('filepath');
 
