@@ -7,13 +7,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::prefix('service')->group(function () {
-    Route::get('/{id?}', function(?int $id = null){
-        if($id !== null) {
-            return view('public.service.detail');
-        }
-
-        return view('public.service.index');
-    })->where('id', '[0-9]+')
+    Route::get('/{id?}', [\App\Http\Controllers\ServiceController::class, 'index'])
+        ->where('id', '[0-9]+')
         ->name('service');
 
     Route::get('/price', function(){
