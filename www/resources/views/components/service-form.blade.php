@@ -8,7 +8,7 @@
         <!-- Форма -->
         <form class="space-y-4">
             <!-- Скрытое поле услуги -->
-            <input type="hidden" name="service" id="serviceField">
+            <input type="hidden" name="service" id="serviceField" value="">
 
             <!-- Имя -->
             <div>

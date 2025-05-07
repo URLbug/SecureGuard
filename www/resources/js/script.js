@@ -60,7 +60,7 @@ const modal = {
 
         document.querySelectorAll('.service-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                document.getElementById('serviceField').value = btn.dataset.service;
+                document.getElementById('serviceField').value = btn.getAttribute('data-service-type');
                 modal.classList.remove('hidden');
             });
         });
