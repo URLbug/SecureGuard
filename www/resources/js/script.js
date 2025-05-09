@@ -114,6 +114,35 @@ const modal = {
     }
 }
 
+const admin = {
+    uploadIMG: function() {
+        const uploadFileInput = document.getElementById('uploadFile');
+        const previewImage = document.getElementById('previewImage');
+        const uploadBtn = document.getElementById('uploadBtn');
+
+        uploadBtn?.addEventListener('click', () => {
+            uploadFileInput.click();
+        });
+
+        uploadFileInput?.addEventListener('change', () => {
+            const file = uploadFileInput.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    previewImage.src = e.target.result;
+                    previewImage.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewImage.src = '';
+                previewImage.classList.add('hidden');
+                alert('Пожалуйста, выберите файл изображения.');
+            }
+        });
+    }
+}
+
 window.addEventListener('DOMContentLoaded', function(){
     modal.service();
+    admin.uploadIMG();
 });

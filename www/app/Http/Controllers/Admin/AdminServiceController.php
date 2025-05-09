@@ -9,8 +9,14 @@ use Illuminate\View\View;
 
 class AdminServiceController extends Controller
 {
-    function index(): View
+    function index(?int $id = null): View
     {
+        if($id !== null) {
+            return view('admin.content.detail', [
+                'title' => 'Редактировать услугу'
+            ]);
+        }
+
         return view('admin.content.index', [
             'title'    => 'Услуги',
             'contents' => $this->getServicePagination(),
@@ -22,7 +28,7 @@ class AdminServiceController extends Controller
         return Service::query()->with('user')->paginate($page);
     }
 
-    function edit()
+    function update()
     {
 
     }

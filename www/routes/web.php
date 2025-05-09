@@ -35,7 +35,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])
     ->name('admin-home');
 
-    Route::get('/service', [\App\Http\Controllers\Admin\AdminServiceController::class, 'index'])
+    Route::get('/service/{id?}', [\App\Http\Controllers\Admin\AdminServiceController::class, 'index'])
         ->name('admin-service');
 });
 
