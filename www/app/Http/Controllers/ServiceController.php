@@ -24,13 +24,13 @@ class ServiceController extends Controller
 
     protected function getServicesPaginate($perPage = 10): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
-        return Service::query()->paginate($perPage);
+        return Service::query()->where('active', true)->paginate($perPage);
     }
 
     protected function getServiceAll($second = 3600)
     {
         return Cache::remember('service-all', $second, function() {
-            return Service::all(['title', 'price']);
+            return Service::query()->where('active', true)->get(['title', 'price']);
         });
     }
 

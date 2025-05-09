@@ -10,11 +10,13 @@ class Service extends Model
     protected $table = 'services';
 
     protected $fillable = [
+        'id',
         'active',
         'title',
         'price',
         'description',
         'filepath',
+        'user',
     ];
 
     public function user(): BelongsTo

@@ -59,7 +59,7 @@ const modal = {
         // const closeButtons = document.querySelectorAll('#closeModal, #cancelBtn');
 
         document.querySelectorAll('.service-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn?.addEventListener('click', () => {
                 document.getElementById('serviceField').value = btn.getAttribute('data-service-type');
                 modal.classList.remove('hidden');
             });
@@ -67,7 +67,7 @@ const modal = {
 
         // Навешиваем обработчики закрытия
         document.querySelectorAll('[id^="close"]').forEach(btn => {
-            btn.addEventListener('click', closeAllModals);
+            btn?.addEventListener('click', closeAllModals);
         });
 
         // Закрытие по клику вне модалки
@@ -76,9 +76,9 @@ const modal = {
         });
 
         // Маска для номера телефона
-        phone.addEventListener('input', this.maskPhone);
+        phone?.addEventListener('input', this.maskPhone);
 
-        phone.addEventListener('focus', function() {
+        phone?.addEventListener('focus', function() {
             if (this.value.length === 0) this.value = '+7 (';
             setTimeout(() => {
                 let pos = this.value.indexOf('_');
@@ -86,13 +86,13 @@ const modal = {
             }, 0);
         });
 
-        phone.addEventListener('blur', function() {
+        phone?.addEventListener('blur', function() {
             if (this.value === '+7 (' || this.value.length < 18) {
                 this.value = '';
             }
         });
 
-        form.addEventListener('submit', async (e) => {
+        form?.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             try {
