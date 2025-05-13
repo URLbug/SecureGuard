@@ -42,14 +42,14 @@
                         </td>
                     @endforeach
                     <td class="px-6 py-4">
-                        <button class="bg-blue-700 hover:bg-blue-800 text-white px-3 py-1.5 rounded-md text-sm">
+                        <a href="{{ route('admin-service', ['id' => $content->id]) }}" class="bg-blue-700 hover:bg-blue-800 text-white px-3 py-1.5 rounded-md text-sm">
                             Редактировать
-                        </button>
+                        </a>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
     </div>
-    <x-pagination isAdmin="{{ true }}" route="{{ 'admin-service' }}" perPage="{{ $contents->perPage() }}" lastPage="{{ $contents->lastPage() }}" currentPage="{{ $contents->currentPage() }}"/>
+    <x-pagination isAdmin="{{ true }}" route="{{ $route }}" perPage="{{ $contents->perPage() }}" lastPage="{{ $contents->lastPage() }}" currentPage="{{ $contents->currentPage() }}"/>
 @endsection

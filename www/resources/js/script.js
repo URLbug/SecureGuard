@@ -143,6 +143,8 @@ const admin = {
 }
 
 window.addEventListener('DOMContentLoaded', function(){
-    modal.service();
+    if(!window.location.pathname.includes('/admin'))
+        modal.service();
+
     admin.uploadIMG();
 });
