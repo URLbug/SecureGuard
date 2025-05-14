@@ -136,6 +136,7 @@ const admin = {
             } else {
                 previewImage.src = '';
                 previewImage.classList.add('hidden');
+                this.value = '';
                 alert('Пожалуйста, выберите файл изображения.');
             }
         });

@@ -19,6 +19,6 @@ class ServiceController extends Controller
             return view('public.service.detail', ['service' => Service::getServiceById($id)]);
         }
 
-        return view('public.service.index', ['services' => Service::getServicesPaginate(3)]);
+        return view('public.service.index', ['services' => Service::getServicesPaginate(true, 3)]);
     }
 }

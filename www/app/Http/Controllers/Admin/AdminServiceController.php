@@ -20,15 +20,17 @@ class AdminServiceController extends Controller
             }
 
             return view('admin.content.detail', [
-                'title'   => 'Редактировать услугу',
-                'content' => $element,
-                'route'   => 'admin-service',
+                'title'      => 'Редактировать услугу',
+                'content'    => $element,
+                'route'      => 'admin-service',
+                'route_back' => 'admin-service',
+                'method'     => 'PATCH',
             ]);
         }
 
         return view('admin.content.index', [
             'title'    => 'Услуги',
-            'contents' => Service::getServicesPaginate(5),
+            'contents' => Service::getServicesPaginate(false, 5),
             'route'    => 'admin-service',
         ]);
     }

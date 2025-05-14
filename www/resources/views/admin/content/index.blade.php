@@ -13,7 +13,9 @@
                 @foreach($contents->items()[0]->getFillable() as $fillable)
                     <th class="px-6 py-4 text-left text-sm font-medium text-gray-500">{{ $fillable }}</th>
                 @endforeach
-                <th class="px-6 py-4 text-left text-sm font-medium text-gray-500">Редактировать</th>
+                <th class="px-6 py-4 text-left text-sm font-medium text-gray-500">
+                    <a href="">Создать элемент</a>
+                </th>
             </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
@@ -31,7 +33,7 @@
                                     @break
 
                                 @case('user')
-                                    [{{ $column['id'] }}] {{ $column['username'] }}
+                                    [{{ $column['id'] ?? '' }}] {{ $column['username'] ?? '' }}
                                     @break
 
                                 @default

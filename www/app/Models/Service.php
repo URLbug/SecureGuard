@@ -18,6 +18,8 @@ class Service extends Model
         'description',
         'filepath',
         'user',
+        'created_at',
+        'updated_at',
     ];
 
     public function user(): BelongsTo
@@ -25,20 +27,24 @@ class Service extends Model
         return $this->belongsTo(User::class, 'userId');
     }
 
-    public static function getServicesPaginate($perPage = 10): \Illuminate\Contracts\Pagination\LengthAwarePaginator
+    public static function getServicesPaginate($isActive = true, $perPage = 10): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
-        return Service::query()
-            ->with('user')
-            ->where('active', true)
-            ->paginate($perPage);
+        $service = Service::query()
+            ->with('user');
+
+        if($isActive) {
+            $service->where('active', true);
+        }
+
+        return $service->paginate($perPage);
     }
 
-    public static function getServiceAll($second = 3600)
+    public static function getServiceAll($isActive = true, $second = 3600)
     {
-        return Cache::remember('service-all', $second, function() {
+        return Cache::remember('service-all', $second, function() use ($isActive) {
             return Service::query()
                 ->with('user')
-                ->where('active', true)
+                ->where('active', $isActive)
                 ->get(['title', 'price']);
         });
     }
