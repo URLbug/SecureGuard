@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin-service') }}" class="flex items-center p-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg">
+                    <a href="{{ route('admin-news') }}" class="flex items-center p-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg">
                         <i class="fa-solid fa-newspaper w-5 mr-3 text-gray-400"></i>
                         Новости
                     </a>

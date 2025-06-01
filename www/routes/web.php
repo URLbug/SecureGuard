@@ -52,6 +52,12 @@ Route::prefix('admin')
 
         Route::match(
             ['get', 'patch', 'delete', 'post',],
+            '/news/{id?}',
+            [\App\Http\Controllers\Admin\AdminNewsController::class, 'index'])
+            ->name('admin-news');
+
+        Route::match(
+            ['get', 'patch', 'delete', 'post',],
             '/make',
             [\App\Http\Controllers\Admin\AdminMakerController::class, 'index'])
         ->name('admin-make');

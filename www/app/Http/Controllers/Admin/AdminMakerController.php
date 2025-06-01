@@ -70,14 +70,20 @@ class AdminMakerController extends Controller
 
         Storage::disk('public')->put($fileName, file_get_contents($file->getRealPath()));
 
+        $array_price = [];
+        if($route_back === 'admin-service') {
+            $array_price = [
+                'price' => $request->get('price'),
+            ];
+        }
+
         $class::query()->insert([
             'active'      => $request->get('active') != '0',
             'title'       => $request->get('title'),
             'description' => $request->get('description'),
-            'price'       => $request->get('price'),
             'filepath'    => Storage::disk('public')->url($fileName),
             'userId'      => Auth::user()->getAuthIdentifier(),
-        ]);
+        ] + $array_price);
 
         return redirect()->route($route_back);
     }
