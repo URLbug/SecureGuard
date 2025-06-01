@@ -52,12 +52,14 @@
 
     <main class="ml-64 p-8">
         <!-- Top Bar -->
-        <div class="flex justify-between items-center mb-8">
-            <h1 class="text-2xl font-semibold text-gray-800">@yield('title')</h1>
-            <button class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm">
-                Выйти
-            </button>
-        </div>
+        @if(\Illuminate\Support\Facades\Auth::check() && (isset($exception) && $exception->getStatusCode() < 400))
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-2xl font-semibold text-gray-800">@yield('title')</h1>
+                <a href="{{ route('logout') }}" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm">
+                    Выйти
+                </a>
+            </div>
+        @endif
 
         @yield('content')
     </main>

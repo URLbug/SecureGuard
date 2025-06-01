@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 
 class Service extends Model
@@ -26,6 +27,21 @@ class Service extends Model
     {
         return $this->belongsTo(User::class, 'userId');
     }
+
+    public function getCreatedAtAttribute($date): string
+    {
+        $dateTime = new \DateTime($date);
+
+        return $dateTime->format('d.m.Y H:i:s');
+    }
+
+    public function getUpdatedAtAttribute($date): string
+    {
+        $dateTime = new \DateTime($date);
+
+        return $dateTime->format('d.m.Y H:i:s');
+    }
+
 
     public static function getServicesPaginate($isActive = true, $perPage = 10): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {

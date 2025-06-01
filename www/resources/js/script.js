@@ -116,28 +116,55 @@ const modal = {
 
 const admin = {
     uploadIMG: function() {
-        const uploadFileInput = document.getElementById('uploadFile');
+        const uploadFile = document.getElementById('uploadFile');
         const previewImage = document.getElementById('previewImage');
-        const uploadBtn = document.getElementById('uploadBtn');
+        const imagePreview = document.getElementById('imagePreview');
+        const removeImage = document.getElementById('removeImage');
+        const filepath = document.querySelector('[name=filepath]');
+        const uploadContainer = document.getElementById('uploadContainer');
 
-        uploadBtn?.addEventListener('click', () => {
-            uploadFileInput.click();
+        // Обработка выбора файла
+        uploadFile?.addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    imagePreview.classList.remove('hidden');
+                }
+
+                reader.readAsDataURL(this.files[0]);
+            }
         });
 
-        uploadFileInput?.addEventListener('change', () => {
-            const file = uploadFileInput.files[0];
-            if (file && file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onload = e => {
-                    previewImage.src = e.target.result;
-                    previewImage.classList.remove('hidden');
-                };
-                reader.readAsDataURL(file);
-            } else {
-                previewImage.src = '';
-                previewImage.classList.add('hidden');
-                this.value = '';
-                alert('Пожалуйста, выберите файл изображения.');
+        // Удаление изображения
+        removeImage?.addEventListener('click', function() {
+            previewImage.src = '';
+            filepath.value = '';
+            imagePreview.classList.add('hidden');
+            uploadFile.value = '';
+        });
+
+        // Drag and drop функционал
+        uploadContainer?.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('border-blue-500', 'bg-blue-50');
+        });
+
+        uploadContainer?.addEventListener('dragleave', function() {
+            this.classList.remove('border-blue-500', 'bg-blue-50');
+        });
+
+        uploadContainer?.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('border-blue-500', 'bg-blue-50');
+
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                uploadFile.files = e.dataTransfer.files;
+
+                // Триггерим событие change
+                const event = new Event('change');
+                uploadFile.dispatchEvent(event);
             }
         });
     },
@@ -186,7 +213,7 @@ const admin = {
 }
 
 window.addEventListener('DOMContentLoaded', function(){
-    if(!window.location.pathname.includes('/admin')) {
+    if(!window.location.pathname.includes('/admin') && !window.location.pathname.includes('/login')) {
         modal.service();
     }
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\RedirectResponse;
@@ -26,6 +29,7 @@ class AdminMakerController extends Controller
             'title'      => 'Создать элемент',
             'route'      => 'admin-make',
             'method'     => 'POST',
+            'content'    => new Service,
             'route_back' => $route_back,
         ]);
     }
@@ -66,13 +70,13 @@ class AdminMakerController extends Controller
 
         Storage::disk('public')->put($fileName, file_get_contents($file->getRealPath()));
 
-        $class::create([
+        $class::query()->insert([
             'active'      => $request->get('active') != '0',
             'title'       => $request->get('title'),
             'description' => $request->get('description'),
             'price'       => $request->get('price'),
             'filepath'    => Storage::disk('public')->url($fileName),
-            'userId'      => 1,
+            'userId'      => Auth::user()->getAuthIdentifier(),
         ]);
 
         return redirect()->route($route_back);

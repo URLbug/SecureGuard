@@ -50,13 +50,20 @@ class AdminServiceController extends Controller
     function update(Request $request, Service $service): RedirectResponse
     {
         try {
-            // Обновляем только переданные поля
+            $fileName = '';
+
+            if($request->has('filepath')) {
+                $fileName = $request->get('filepath');
+            }
+
             $file = $request->file('uploadFile');
 
             if($request->hasFile('uploadFile')) {
                 $fileName = md5(rand(1, 100) . ':' . $file->getFilename()) . '.' . $file->getClientOriginalExtension();
 
                 Storage::disk('public')->put($fileName, file_get_contents($file->getRealPath()));
+
+                $fileName = Storage::disk('public')->url($fileName);
             }
 
             $updated = $service->update([
@@ -64,7 +71,7 @@ class AdminServiceController extends Controller
                 'name'          => $request->get('name') ?? '',
                 'description'   => $request->get('description') ?? '',
                 'price'         => $request->get('price') ?? 0,
-                'filepath'      => isset($fileName) ? Storage::disk('public')->url($fileName) : '',
+                'filepath'      => $fileName,
             ]);
 
             if (!$updated) {

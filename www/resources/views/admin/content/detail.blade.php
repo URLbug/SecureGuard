@@ -51,11 +51,38 @@
 
                     <div class="bg-gray-50 p-4 rounded-lg">
                         <h3 class="text-sm font-semibold text-gray-800 mb-4">Изображение</h3>
-                        <img id="previewImage" alt="Preview Image" class="{{ $content->filepath ?? false ? '' : 'hidden'}}" src="{{ $content->filepath ?? '' }}"/>
-                        <div class="border-2 border-dashed border-gray-300 rounded-lg h-32 flex items-center justify-center">
-                            <input type="file" class="hidden" id="uploadFile" name="uploadFile">
-                            <div class="text-blue-700 text-sm" id="uploadBtn">
-                                <i class="fas fa-upload mr-2"></i>Загрузить изображение
+
+                        <!-- Превью изображения -->
+                        <div id="imagePreview" class="{{ $content->filepath ? : 'hidden' }} mb-4">
+                            <img id="previewImage"
+                                 src="{{ $content->filepath ?? '' }}"
+                                 alt="Preview Image"
+                                 class="max-w-full h-48 object-contain border rounded-lg">
+
+                            <button type="button" id="removeImage"
+                                    class="mt-2 text-red-600 hover:text-red-800 text-sm flex items-center">
+                                <i class="fas fa-trash mr-1"></i> Удалить изображение
+                            </button>
+                        </div>
+
+                        <!-- Контейнер для загрузки -->
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg h-32 flex items-center justify-center relative overflow-hidden"
+                             id="uploadContainer">
+                            <input type="file"
+                                   id="uploadFile"
+                                   name="uploadFile"
+                                   accept="image/*"
+                                   class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                            <input type="hidden"
+                                   id="filepath"
+                                   name="filepath"
+                                   value="{{ $content->filepath ?? '' }}"
+                                   class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+
+                            <div class="text-center p-4">
+                                <i class="fas fa-upload text-blue-600 text-xl mb-2"></i>
+                                <p class="text-blue-700 text-sm font-medium">Загрузить изображение</p>
+                                <p class="text-gray-500 text-xs mt-1">Перетащите или кликните для выбора</p>
                             </div>
                         </div>
                     </div>
