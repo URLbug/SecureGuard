@@ -22,11 +22,11 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">Активность</label>
                         <select class="w-full px-4 py-2 border border-gray-300 rounded-lg" name="active">
                             @if($content->active ?? false)
-                                <option>Активен</option>
-                                <option>Деактивен</option>
+                                <option value="1">Активен</option>
+                                <option value="0">Деактивен</option>
                             @else
-                                <option>Деактивен</option>
-                                <option>Активен</option>
+                                <option value="0">Деактивен</option>
+                                <option value="1">Активен</option>
                             @endif
                         </select>
                     </div>

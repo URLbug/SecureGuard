@@ -10,6 +10,8 @@ return [
     'min' => [
         'numeric' => 'Поле :attribute должно быть не меньше :min.',
     ],
+    'boolean' => 'Статус :attribute должен быть Да/Нет',
+    'regex' => 'Неверный формат :attribute',
     'mimes' => 'Поле :attribute должно быть файлом типа: :values.',
     'file' => 'Поле :attribute должно быть файлом.',
     'attributes' => [

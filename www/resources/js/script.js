@@ -140,12 +140,58 @@ const admin = {
                 alert('Пожалуйста, выберите файл изображения.');
             }
         });
+    },
+
+    deleteElement: function() {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const uri = this.getAttribute('data-href');
+                const row = this.closest('tr');  // Находим родительскую строку таблицы
+                const token = document.querySelector('meta[name="csrf-token"]').content;
+
+                fetch(uri, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': token,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network error');
+                        return response.json();
+                    })
+                    .then(json => {
+                        if (!json.success) {
+                            throw new Error('Delete failed');
+                        }
+
+                        row.style.opacity = '0';
+                        setTimeout(() => row.remove(), 300);
+
+                        alert('Элемент был удален успешно!');
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        alert('Не удалось удалить элемент');
+                    });
+            });
+        });
     }
+
 }
 
 window.addEventListener('DOMContentLoaded', function(){
-    if(!window.location.pathname.includes('/admin'))
+    if(!window.location.pathname.includes('/admin')) {
         modal.service();
+    }
 
-    admin.uploadIMG();
+    if(window.location.pathname.includes('/admin')) {
+        admin.uploadIMG();
+        admin.deleteElement()
+    }
 });

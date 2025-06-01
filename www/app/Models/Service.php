@@ -50,10 +50,8 @@ class Service extends Model
     }
 
     public static function getServiceById(int $id, $second = 3600): Service {
-        return Cache::remember('service-id-' . $id, $second, function() use ($id) {
-            return Service::query()
-                ->with('user')
-                ->findOrFail($id);
-        });
+        return Service::query()
+            ->with('user')
+            ->findOrFail($id);
     }
 }

@@ -66,12 +66,12 @@ class AdminMakerController extends Controller
 
         Storage::disk('public')->put($fileName, file_get_contents($file->getRealPath()));
 
-        $isCreate = $class::create([
-            'active'      => $request->get('active') == 'Деактивен' ? false : true,
+        $class::create([
+            'active'      => $request->get('active') != '0',
             'title'       => $request->get('title'),
             'description' => $request->get('description'),
             'price'       => $request->get('price'),
-            'filepath'    => Storage::disk('public')->url('' .$fileName),
+            'filepath'    => Storage::disk('public')->url($fileName),
             'userId'      => 1,
         ]);
 
