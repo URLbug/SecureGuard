@@ -6,6 +6,8 @@ Route::get('/', function () {
     return view('public.index');
 })->name('home');
 
+Route::view('/privacy-policy', 'public.about.config')->name('privacy');
+
 Route::prefix('service')->group(function () {
     Route::get('/{id?}', [\App\Http\Controllers\ServiceController::class, 'index'])
         ->where('id', '[0-9]+')

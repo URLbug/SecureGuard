@@ -51,7 +51,7 @@
                 <input type="checkbox" required
                        class="w-4 h-4 accent-amber-500 bg-gray-800 border-gray-700 rounded">
                 <label class="ml-2 text-sm">
-                    Согласен с <a href="#" class="text-amber-500 hover:underline">политикой конфиденциальности</a>
+                    Согласен с <a href="{{ route('privacy') }}" class="text-amber-500 hover:underline">политикой конфиденциальности</a>
                 </label>
             </div>
 

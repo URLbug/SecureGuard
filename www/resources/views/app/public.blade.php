@@ -79,25 +79,21 @@
                 <div>
                     <h3 class="text-amber-500 text-lg font-bold mb-4">Охранные услуги</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-amber-500">Физическая охрана</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Пультовая охрана</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Видеонаблюдение</a></li>
+                        <li><a href="/service/2" class="hover:text-amber-500">Вооруженное сопровождение грузов</a></li>
+                        <li><a href="/service/3" class="hover:text-amber-500">Круглосуточный патруль</a></li>
+                        <li><a href="/service/4" class="hover:text-amber-500">Персональная защита</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-amber-500 text-lg font-bold mb-4">Цены на услуги</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-amber-500">Тарифы</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Акции</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Калькулятор</a></li>
+                        <li><a href="{{ route('service-price') }}" class="hover:text-amber-500">Тарифы</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-amber-500 text-lg font-bold mb-4">Документы</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-amber-500">Политика конфиденциальности</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Лицензии</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Сертификаты</a></li>
+                        <li><a href="{{ route('privacy') }}" class="hover:text-amber-500">Политика конфиденциальности</a></li>
                     </ul>
                 </div>
             </div>

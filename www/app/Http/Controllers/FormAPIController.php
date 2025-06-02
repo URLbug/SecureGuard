@@ -30,10 +30,10 @@ class FormAPIController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'string|email|max:255',
-            'phone' => 'required|string|max:255',
-            'message' => 'string',
+            'name'    => 'required|string|max:255',
+            'email'   => 'nullable|string|email|max:255',
+            'phone'   => 'required|string|max:255',
+            'message' => 'nullable|string',
         ]);
 
         if($validator->fails()) {

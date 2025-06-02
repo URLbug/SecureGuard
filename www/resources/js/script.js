@@ -47,7 +47,9 @@ const modal = {
                     return;
                 }
 
-                modal.classList.add('hidden');
+                if(modal.id !== 'closeErrorModal' && modal.id !== 'closeSuccessModal') {
+                    modal.classList.add('hidden');
+                }
             });
         }
 
@@ -118,7 +120,6 @@ const modal = {
                 form.reset();
             })
             .catch(error => {
-                console.log(error)
                 modal.classList.add('hidden');
                 errorModal.classList.remove('hidden');
             });
