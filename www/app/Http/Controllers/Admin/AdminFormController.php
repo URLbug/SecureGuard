@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\News;
+use App\Models\Form;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,12 +11,12 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
 use \Illuminate\Http\RedirectResponse;
 
-class AdminNewsController extends Controller
+class AdminFormController extends Controller
 {
     function index(Request $request, ?int $id = null): View|RedirectResponse|JsonResponse
     {
         if($id !== null) {
-            $element = News::getNewsById($id);
+            $element = Form::getFormById($id);
 
             if($request->isMethod('PATCH')) {
                 return $this->update($request, $element);
@@ -29,16 +29,16 @@ class AdminNewsController extends Controller
             return view('admin.content.detail', [
                 'title'      => 'Редактировать услугу',
                 'content'    => $element,
-                'route'      => 'admin-news',
-                'route_back' => 'admin-news',
+                'route'      => 'admin-form',
+                'route_back' => 'admin-form',
                 'method'     => 'PATCH',
             ]);
         }
 
         return view('admin.content.index', [
             'title'    => 'Услуги',
-            'contents' => News::getNewssPaginate(false, 5),
-            'route'    => 'admin-news',
+            'contents' => Form::getFormsPaginate(false, 5),
+            'route'    => 'admin-form',
         ]);
     }
 
@@ -47,7 +47,7 @@ class AdminNewsController extends Controller
 
     }
 
-    function update(Request $request, News $news): RedirectResponse
+    function update(Request $request, Form $form): RedirectResponse
     {
         try {
             $fileName = '';
@@ -66,7 +66,7 @@ class AdminNewsController extends Controller
                 $fileName = Storage::disk('public')->url($fileName);
             }
 
-            $updated = $news->update([
+            $updated = $form->update([
                 'active'        => $request->get('active') != '0',
                 'name'          => $request->get('name') ?? '',
                 'description'   => $request->get('description') ?? '',
@@ -75,7 +75,7 @@ class AdminNewsController extends Controller
             ]);
 
             if (!$updated) {
-                throw new \Exception('Failed to update News');
+                throw new \Exception('Failed to update Form');
             }
 
             return redirect()->back()
@@ -88,9 +88,9 @@ class AdminNewsController extends Controller
         }
     }
 
-    function destroy(News $news): JsonResponse
+    function destroy(Form $form): JsonResponse
     {
-        $idDelete = $news->delete();
+        $idDelete = $form->delete();
 
         if($idDelete) {
             return response()->json([
@@ -103,7 +103,7 @@ class AdminNewsController extends Controller
         return response()->json([
             'success' => false,
             'code' => 500,
-            'errors' => 'Can`t delete News',
+            'errors' => 'Can`t delete Form',
         ]);
     }
 }

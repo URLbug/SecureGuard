@@ -35,9 +35,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center p-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg">
-                        <i class="fas fa-users w-5 mr-3 text-gray-400"></i>
-                        Пользователи
+                    <a href="{{ route('admin-form') }}" class="flex items-center p-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg">
+                        <i class="fa-solid fa-comment w-5 mr-3 text-gray-400"></i>
+                        Формы обратной связи
                     </a>
                 </li>
                 <li>

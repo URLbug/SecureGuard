@@ -6,6 +6,8 @@ Route::get('/', function () {
     return view('public.index');
 })->name('home');
 
+Route::view('/privacy-policy', 'public.about.config')->name('privacy');
+
 Route::prefix('service')->group(function () {
     Route::get('/{id?}', [\App\Http\Controllers\ServiceController::class, 'index'])
         ->where('id', '[0-9]+')
@@ -21,6 +23,10 @@ Route::prefix('news')->group(function () {
         ->where('id', '[0-9]+')
         ->name('news');
 });
+
+Route::post('/api/form/submit',
+    [\App\Http\Controllers\FormAPIController::class, 'index']
+)->name('api.form');
 
 Route::get('/contact', function(){
     return view('public.contact.index');
@@ -55,6 +61,12 @@ Route::prefix('admin')
             '/news/{id?}',
             [\App\Http\Controllers\Admin\AdminNewsController::class, 'index'])
             ->name('admin-news');
+
+        Route::match(
+            ['get', 'patch', 'delete', 'post',],
+            '/form/{id?}',
+            [\App\Http\Controllers\Admin\AdminFormController::class, 'index'])
+            ->name('admin-form');
 
         Route::match(
             ['get', 'patch', 'delete', 'post',],

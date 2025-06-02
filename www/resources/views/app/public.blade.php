@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SecureGuard - Охранные системы</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js',])
@@ -21,16 +22,6 @@
             </div>
 
             <div class="flex flex-col md:flex-row items-center gap-4">
-                <!-- Поиск -->
-                <div class="relative">
-                    <input type="search" placeholder="Поиск..." class="px-4 py-2 rounded-lg bg-gray-800 text-white w-48">
-                    <button class="absolute right-2 top-2">
-                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </button>
-                </div>
-
                 <!-- Контакты -->
                 <div class="text-sm">
                     <p class="flex items-center gap-1">
@@ -88,25 +79,21 @@
                 <div>
                     <h3 class="text-amber-500 text-lg font-bold mb-4">Охранные услуги</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-amber-500">Физическая охрана</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Пультовая охрана</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Видеонаблюдение</a></li>
+                        <li><a href="/service/2" class="hover:text-amber-500">Вооруженное сопровождение грузов</a></li>
+                        <li><a href="/service/3" class="hover:text-amber-500">Круглосуточный патруль</a></li>
+                        <li><a href="/service/4" class="hover:text-amber-500">Персональная защита</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-amber-500 text-lg font-bold mb-4">Цены на услуги</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-amber-500">Тарифы</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Акции</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Калькулятор</a></li>
+                        <li><a href="{{ route('service-price') }}" class="hover:text-amber-500">Тарифы</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-amber-500 text-lg font-bold mb-4">Документы</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-amber-500">Политика конфиденциальности</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Лицензии</a></li>
-                        <li><a href="#" class="hover:text-amber-500">Сертификаты</a></li>
+                        <li><a href="{{ route('privacy') }}" class="hover:text-amber-500">Политика конфиденциальности</a></li>
                     </ul>
                 </div>
             </div>

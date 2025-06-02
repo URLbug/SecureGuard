@@ -6,7 +6,7 @@
         </div>
 
         <!-- Форма -->
-        <form class="space-y-4">
+        <form class="space-y-4" action="/" method="post">
             <!-- Скрытое поле услуги -->
             <input type="hidden" name="service" id="serviceField" value="">
 
@@ -14,6 +14,7 @@
             <div>
                 <label class="block text-sm font-medium mb-1">Имя *</label>
                 <input type="text" required
+                       name="name"
                        class="w-full px-4 py-2 bg-gray-800 rounded-lg border border-gray-700
                     focus:border-amber-500 focus:ring-2 focus:ring-amber-500/50">
             </div>
@@ -22,6 +23,7 @@
             <div>
                 <label class="block text-sm font-medium mb-1">E-Mail</label>
                 <input type="email"
+                       name="email"
                        class="w-full px-4 py-2 bg-gray-800 rounded-lg border border-gray-700
                     focus:border-amber-500 focus:ring-2 focus:ring-amber-500/50">
             </div>
@@ -30,6 +32,7 @@
             <div>
                 <label class="block text-sm font-medium mb-1">Телефон *</label>
                 <input type="tel" id="phone" required
+                       name="phone"
                        class="w-full px-4 py-2 bg-gray-800 rounded-lg border border-gray-700
                     focus:border-amber-500 focus:ring-2 focus:ring-amber-500/50">
             </div>
@@ -38,6 +41,7 @@
             <div>
                 <label class="block text-sm font-medium mb-1">Сообщение</label>
                 <textarea rows="3"
+                          name="message"
                           class="w-full px-4 py-2 bg-gray-800 rounded-lg border border-gray-700
                     focus:border-amber-500 focus:ring-2 focus:ring-amber-500/50"></textarea>
             </div>
@@ -47,7 +51,7 @@
                 <input type="checkbox" required
                        class="w-4 h-4 accent-amber-500 bg-gray-800 border-gray-700 rounded">
                 <label class="ml-2 text-sm">
-                    Согласен с <a href="#" class="text-amber-500 hover:underline">политикой конфиденциальности</a>
+                    Согласен с <a href="{{ route('privacy') }}" class="text-amber-500 hover:underline">политикой конфиденциальности</a>
                 </label>
             </div>
 

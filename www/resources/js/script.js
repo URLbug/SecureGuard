@@ -1,17 +1,17 @@
 const modal = {
-    setCursorPosition: function (pos, elem) {
-        elem.focus();
-        if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
-        else if (elem.createTextRange) {
-            let range = elem.createTextRange();
-            range.collapse(true);
-            range.moveEnd('character', pos);
-            range.moveStart('character', pos);
-            range.select();
-        }
-    },
-
     maskPhone: function (event) {
+        function setCursorPosition(pos, elem) {
+            elem.focus();
+            if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
+            else if (elem.createTextRange) {
+                let range = elem.createTextRange();
+                range.collapse(true);
+                range.moveEnd('character', pos);
+                range.moveStart('character', pos);
+                range.select();
+            }
+        }
+
         const input = document.getElementById('phone');
         const mask = '+7 (___) ___-__-__';
 
@@ -33,7 +33,7 @@ const modal = {
         let cursorPos = this.value.indexOf('_');
         if (cursorPos === -1) cursorPos = this.value.length;
 
-        this.setCursorPosition(cursorPos, this);
+        setCursorPosition(cursorPos, this);
     },
 
     service: function(){
@@ -47,12 +47,14 @@ const modal = {
                     return;
                 }
 
-                modal.classList.add('hidden');
+                if(modal.id !== 'closeErrorModal' && modal.id !== 'closeSuccessModal') {
+                    modal.classList.add('hidden');
+                }
             });
         }
 
         const modal = document.getElementById('modal');
-        const form = document.querySelector('form');
+        const form = document.querySelector('#modal form');
         const successModal = document.getElementById('successModal');
         const errorModal = document.getElementById('errorModal');
         const phone = document.getElementById('phone');
@@ -95,21 +97,32 @@ const modal = {
         form?.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            try {
-                await fetch('/api/submit', {
-                    method: 'POST',
-                    body: new FormData(modal)
-                });
+            const token = document.querySelector('meta[name="csrf-token"]').content;
+            const formData = new FormData(form)
+
+            fetch('/api/form/submit', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': token,
+                }
+            }).then(response => {
+                if (!response.ok) throw new Error('Network error');
+                return response.json();
+            })
+            .then(json => {
+                if (!json.success) {
+                    throw new Error('Not found');
+                }
 
                 modal.classList.add('hidden');
                 successModal.classList.remove('hidden');
                 form.reset();
-
-            } catch (error) {
-                // Если ошибка
+            })
+            .catch(error => {
                 modal.classList.add('hidden');
                 errorModal.classList.remove('hidden');
-            }
+            });
         });
     }
 }
