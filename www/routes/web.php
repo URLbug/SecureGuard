@@ -30,5 +30,38 @@ Route::get('/about', function(){
     return view('public.about.index');
 })->name('about');
 
+Route::match(
+    ['get', 'post'],
+    '/login',
+    [\App\Http\Controllers\Admin\AdminController::class, 'index']
+)->name('login');
 
-Route::prefix('ajax')->group(function () {});
+Route::get('/logout', [\App\Http\Controllers\Admin\AdminController::class, 'logout'])->name('logout');
+
+Route::prefix('admin')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])
+        ->name('admin-home');
+
+        Route::match(
+            ['get', 'patch', 'delete', 'post',],
+            '/service/{id?}',
+            [\App\Http\Controllers\Admin\AdminServiceController::class, 'index'])
+            ->name('admin-service');
+
+        Route::match(
+            ['get', 'patch', 'delete', 'post',],
+            '/news/{id?}',
+            [\App\Http\Controllers\Admin\AdminNewsController::class, 'index'])
+            ->name('admin-news');
+
+        Route::match(
+            ['get', 'patch', 'delete', 'post',],
+            '/make',
+            [\App\Http\Controllers\Admin\AdminMakerController::class, 'index'])
+        ->name('admin-make');
+});
+
+Route::prefix('api')->group(function () {});
+

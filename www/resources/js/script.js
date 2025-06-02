@@ -59,7 +59,7 @@ const modal = {
         // const closeButtons = document.querySelectorAll('#closeModal, #cancelBtn');
 
         document.querySelectorAll('.service-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn?.addEventListener('click', () => {
                 document.getElementById('serviceField').value = btn.getAttribute('data-service-type');
                 modal.classList.remove('hidden');
             });
@@ -67,7 +67,7 @@ const modal = {
 
         // Навешиваем обработчики закрытия
         document.querySelectorAll('[id^="close"]').forEach(btn => {
-            btn.addEventListener('click', closeAllModals);
+            btn?.addEventListener('click', closeAllModals);
         });
 
         // Закрытие по клику вне модалки
@@ -76,9 +76,9 @@ const modal = {
         });
 
         // Маска для номера телефона
-        phone.addEventListener('input', this.maskPhone);
+        phone?.addEventListener('input', this.maskPhone);
 
-        phone.addEventListener('focus', function() {
+        phone?.addEventListener('focus', function() {
             if (this.value.length === 0) this.value = '+7 (';
             setTimeout(() => {
                 let pos = this.value.indexOf('_');
@@ -86,13 +86,13 @@ const modal = {
             }, 0);
         });
 
-        phone.addEventListener('blur', function() {
+        phone?.addEventListener('blur', function() {
             if (this.value === '+7 (' || this.value.length < 18) {
                 this.value = '';
             }
         });
 
-        form.addEventListener('submit', async (e) => {
+        form?.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             try {
@@ -114,6 +114,111 @@ const modal = {
     }
 }
 
+const admin = {
+    uploadIMG: function() {
+        const uploadFile = document.getElementById('uploadFile');
+        const previewImage = document.getElementById('previewImage');
+        const imagePreview = document.getElementById('imagePreview');
+        const removeImage = document.getElementById('removeImage');
+        const filepath = document.querySelector('[name=filepath]');
+        const uploadContainer = document.getElementById('uploadContainer');
+
+        // Обработка выбора файла
+        uploadFile?.addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    imagePreview.classList.remove('hidden');
+                }
+
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        // Удаление изображения
+        removeImage?.addEventListener('click', function() {
+            previewImage.src = '';
+            filepath.value = '';
+            imagePreview.classList.add('hidden');
+            uploadFile.value = '';
+        });
+
+        // Drag and drop функционал
+        uploadContainer?.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('border-blue-500', 'bg-blue-50');
+        });
+
+        uploadContainer?.addEventListener('dragleave', function() {
+            this.classList.remove('border-blue-500', 'bg-blue-50');
+        });
+
+        uploadContainer?.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('border-blue-500', 'bg-blue-50');
+
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                uploadFile.files = e.dataTransfer.files;
+
+                // Триггерим событие change
+                const event = new Event('change');
+                uploadFile.dispatchEvent(event);
+            }
+        });
+    },
+
+    deleteElement: function() {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const uri = this.getAttribute('data-href');
+                const row = this.closest('tr');  // Находим родительскую строку таблицы
+                const token = document.querySelector('meta[name="csrf-token"]').content;
+
+                fetch(uri, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': token,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network error');
+                        return response.json();
+                    })
+                    .then(json => {
+                        if (!json.success) {
+                            throw new Error('Delete failed');
+                        }
+
+                        row.style.opacity = '0';
+                        setTimeout(() => row.remove(), 300);
+
+                        alert('Элемент был удален успешно!');
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        alert('Не удалось удалить элемент');
+                    });
+            });
+        });
+    }
+
+}
+
 window.addEventListener('DOMContentLoaded', function(){
-    modal.service();
+    if(!window.location.pathname.includes('/admin') && !window.location.pathname.includes('/login')) {
+        modal.service();
+    }
+
+    if(window.location.pathname.includes('/admin')) {
+        admin.uploadIMG();
+        admin.deleteElement()
+    }
 });
