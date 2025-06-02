@@ -22,6 +22,20 @@ class News extends Model
         return $this->belongsTo(User::class, 'userId');
     }
 
+    public function getCreatedAtAttribute($date): string
+    {
+        $dateTime = new \DateTime($date);
+
+        return $dateTime->format('d.m.Y H:i:s');
+    }
+
+    public function getUpdatedAtAttribute($date): string
+    {
+        $dateTime = new \DateTime($date);
+
+        return $dateTime->format('d.m.Y H:i:s');
+    }
+
     public static function getNewssPaginate($isActive = true, $perPage = 10): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         $News = News::query()

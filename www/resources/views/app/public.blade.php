@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SecureGuard - Охранные системы</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js',])
@@ -21,16 +22,6 @@
             </div>
 
             <div class="flex flex-col md:flex-row items-center gap-4">
-                <!-- Поиск -->
-                <div class="relative">
-                    <input type="search" placeholder="Поиск..." class="px-4 py-2 rounded-lg bg-gray-800 text-white w-48">
-                    <button class="absolute right-2 top-2">
-                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </button>
-                </div>
-
                 <!-- Контакты -->
                 <div class="text-sm">
                     <p class="flex items-center gap-1">

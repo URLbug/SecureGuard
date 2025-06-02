@@ -65,65 +65,17 @@
                         </div>
                     </div>
 
-                    <!-- Карта -->
-                    <div class="mt-8 rounded-xl overflow-hidden">
-                        <iframe
-                            src="https://yandex.ru/map-widget/v1/?um=constructor%3A1b5d6e0d8d2b4e4f4e4e4e4e4e4e4e4e4&amp;source=constructor"
-                            width="100%"
-                            height="400"
-                            frameborder="0"
-                            class="rounded-lg"
-                            allowfullscreen="true">
-                        </iframe>
-                    </div>
                 </div>
 
-                <!-- Форма обратной связи -->
-                <div class="bg-gray-800 rounded-xl p-6">
-                    <h3 class="text-2xl font-bold mb-6">Обратная связь</h3>
-                    <form class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Имя *</label>
-                            <input type="text" required
-                                   class="w-full px-4 py-2 bg-gray-900 rounded-lg border border-gray-700
-                            focus:border-amber-500 focus:ring-2 focus:ring-amber-500/50">
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium mb-1">E-mail</label>
-                            <input type="email"
-                                   class="w-full px-4 py-2 bg-gray-900 rounded-lg border border-gray-700
-                            focus:border-amber-500 focus:ring-2 focus:ring-amber-500/50">
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Телефон *</label>
-                            <input type="tel" required
-                                   class="w-full px-4 py-2 bg-gray-900 rounded-lg border border-gray-700
-                            focus:border-amber-500 focus:ring-2 focus:ring-amber-500/50">
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Сообщение</label>
-                            <textarea rows="4"
-                                      class="w-full px-4 py-2 bg-gray-900 rounded-lg border border-gray-700
-                            focus:border-amber-500 focus:ring-2 focus:ring-amber-500/50"></textarea>
-                        </div>
-
-                        <div class="flex items-center">
-                            <input type="checkbox" required
-                                   class="w-4 h-4 accent-amber-500 bg-gray-900 border-gray-700 rounded">
-                            <label class="ml-2 text-sm">
-                                Согласен с <a href="#" class="text-amber-500 hover:underline">политикой конфиденциальности</a>
-                            </label>
-                        </div>
-
-                        <button type="submit"
-                                class="w-full bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg
-                        transition-colors duration-300 font-semibold mt-4">
-                            Отправить сообщение
-                        </button>
-                    </form>
+                <div class="rounded-xl overflow-hidden">
+                    <iframe
+                        src="https://yandex.ru/map-widget/v1/?um=constructor%3A1b5d6e0d8d2b4e4f4e4e4e4e4e4e4e4e4&amp;source=constructor"
+                        width="100%"
+                        height="400"
+                        frameborder="0"
+                        class="rounded-lg"
+                        allowfullscreen="true">
+                    </iframe>
                 </div>
             </div>
         </div>

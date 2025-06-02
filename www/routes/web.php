@@ -22,6 +22,10 @@ Route::prefix('news')->group(function () {
         ->name('news');
 });
 
+Route::post('/api/form/submit',
+    [\App\Http\Controllers\FormAPIController::class, 'index']
+)->name('api.form');
+
 Route::get('/contact', function(){
     return view('public.contact.index');
 })->name('contact');
@@ -55,6 +59,12 @@ Route::prefix('admin')
             '/news/{id?}',
             [\App\Http\Controllers\Admin\AdminNewsController::class, 'index'])
             ->name('admin-news');
+
+        Route::match(
+            ['get', 'patch', 'delete', 'post',],
+            '/form/{id?}',
+            [\App\Http\Controllers\Admin\AdminFormController::class, 'index'])
+            ->name('admin-form');
 
         Route::match(
             ['get', 'patch', 'delete', 'post',],

@@ -5,14 +5,16 @@
 @endsection
 
 @section('content')
-    <div class="mb-5">
-        <a href="{{ route('admin-make', ['back' => $route]) }}" class="rounded-md inline-block bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 text-sm transition-colors">
-            <span class="hidden sm:inline">Создать элемент</span>
-        </a>
-    </div>
+    @if($route != 'admin-form')
+        <div class="mb-5">
+            <a href="{{ route('admin-make', ['back' => $route]) }}" class="rounded-md inline-block bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 text-sm transition-colors">
+                <span class="hidden sm:inline">Создать элемент</span>
+            </a>
+        </div>
+    @endif
 
     @if($contents->count() == 0)
-        {{ abort(404) }}
+        <?php return?>
     @else
         <div class="bg-white rounded-xl shadow-sm overflow-hidden">
             <div class="overflow-x-auto">
@@ -57,6 +59,16 @@
                                                 @break
 
                                             @default
+                                                @if(is_array($column) || is_object($column))
+                                                    <details>
+                                                        <summary class="cursor-pointer text-blue-600 hover:underline">Данные по обратной связи</summary>
+                                                        <pre class="text-xs text-gray-600 whitespace-pre-wrap break-all">
+                                                            {{ json_encode($column, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) }}
+                                                        </pre>
+                                                    </details>
+                                                    @break
+                                                @endif
+
                                                 @if(!strpos($fillable, 'Id'))
                                                     {{ $column }}
                                                 @endif
@@ -65,9 +77,11 @@
                                 </td>
                             @endforeach
                             <td class="px-3 py-3 text-sm text-right whitespace-nowrap">
-                                <a href="{{ route($route, ['id' => $content->id]) }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md text-sm transition-colors">
-                                    <span class="hidden sm:inline">Редактировать</span>
-                                </a>
+                                @if($route != 'admin-form')
+                                    <a href="{{ route($route, ['id' => $content->id]) }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md text-sm transition-colors">
+                                        <span class="hidden sm:inline">Редактировать</span>
+                                    </a>
+                                @endif
                                 <a data-href="{{ route($route, ['id' => $content->id]) }}" class="delete-btn inline-block bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-md text-sm transition-colors">
                                     <span class="hidden sm:inline">Удалить элемент</span>
                                 </a>
