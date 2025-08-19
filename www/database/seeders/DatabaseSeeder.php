@@ -161,7 +161,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'active'       => true,
             'username'     => 'admin',
-            'password'     => 'admin',
+            'password'     => env('APP_PASSWORD'),
             'groupId'      => 1,
         ]);
     }
