@@ -26,41 +26,6 @@
                 </div>
             </section>
 
-            <!-- Ключевые возможности -->
-            <section class="mb-16">
-                <h2 class="text-3xl font-bold mb-8 relative pb-2 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-16 after:h-1 after:bg-primary">Ключевые возможности</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="p-6 rounded-xl transition-transform duration-300 hover:-translate-y-2">
-                        <div class="text-primary text-3xl mb-4">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Отправка и получение заявок</h3>
-                        <p class="text-gray-600">.</p>
-                    </div>
-                    <div class="p-6 rounded-xl transition-transform duration-300 hover:-translate-y-2">
-                        <div class="text-primary text-3xl mb-4">
-                            <i class="fas fa-fingerprint"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Многофакторная аутентификация</h3>
-                        <p class="text-gray-600">Безопасный доступ с использованием нескольких факторов проверки подлинности.</p>
-                    </div>
-                    <div class="p-6 rounded-xl transition-transform duration-300 hover:-translate-y-2">
-                        <div class="text-primary text-3xl mb-4">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Мониторинг активности</h3>
-                        <p class="text-gray-600">Отслеживание и анализ действий пользователей с системой оповещений.</p>
-                    </div>
-                    <div class="p-6 rounded-xl transition-transform duration-300 hover:-translate-y-2">
-                        <div class="text-primary text-3xl mb-4">
-                            <i class="fas fa-user-lock"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-2">Управление доступом</h3>
-                        <p class="text-gray-600">Гранулярный контроль разрешений и прав доступа для пользователей.</p>
-                    </div>
-                </div>
-            </section>
-
             <!-- Техническая информация -->
             <section class="mb-16">
                 <h2 class="text-3xl font-bold mb-8 relative pb-2 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-16 after:h-1 after:bg-primary">Техническая информация</h2>
