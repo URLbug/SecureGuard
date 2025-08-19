@@ -56,6 +56,7 @@
                     <li><a href="{{ route('service-price') }}" class="hover:text-amber-500">Цены на услуги</a></li>
                     <li><a href="{{ route('news') }}" class="hover:text-amber-500">Новости</a></li>
                     <li><a href="{{ route('contact') }}" class="hover:text-amber-500">Контакты</a></li>
+                    <li><a href="{{ route('about-me') }}" class="hover:text-amber-500">Об проекте</a></li>
                 </ul>
             </div>
         </nav>
