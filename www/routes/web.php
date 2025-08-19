@@ -36,6 +36,10 @@ Route::get('/about', function(){
     return view('public.about.index');
 })->name('about');
 
+Route::get('/about-me', function() {
+    return view('public.about.me');
+})->name('about-me');
+
 Route::match(
     ['get', 'post'],
     '/login',
